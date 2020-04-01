@@ -6,36 +6,23 @@ version: 2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.4-node-browsers-legacy
-
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:3
+      - image: circleci/postgres:10.7-alpine
 
     steps:
       - checkout
-
-      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
-
-      # Download and cache dependencies
-
+      # - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev libpq-dev libgd-dev libxml2 libbz2-dev libzip-dev libonig-dev
+      # - run: sudo docker-php-ext-install zip mysqli pdo pdo_pgsql bz2 bcmath pcntl intl gd mbstring
+      # - run: sudo pecl install redis
+      # - run: sudo docker-php-ext-enable redis
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.lock" }}
+          - v1-dependencies-
       - run: composer install -n --prefer-dist
-
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
             - vendor
-
-      # node cache
-
       - restore_cache:
           keys:
             - node-v4-{{ checksum "package.json" }}
@@ -47,7 +34,8 @@ jobs:
             - node_modules
             - ~/.yarn
 
-      # run tests with phpunit or codecept
-      #- run: ./vendor/bin/phpunit
-      # this example uses codecept but you're not limited to it
-      - run: ./vendor/phpunit/phpunit/phpunit
+      - run: php vendor/phpunit/phpunit/phpunit
+      - store_test_results:
+          path: tests/_output
+      - store_artifacts:
+          path: tests/_output

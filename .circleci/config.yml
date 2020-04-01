@@ -6,18 +6,29 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/postgres:10.7-alpine
+      # Specify the version you desire here
+      - image: circleci/php:7.4-node-browsers-legacy
+
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # Using the RAM variation mitigates I/O contention
+      # for database intensive operations.
+      # - image: circleci/mysql:5.7-ram
+      #
+      # - image: redis:3
 
     steps:
       - checkout
-      # - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev libpq-dev libgd-dev libxml2 libbz2-dev libzip-dev libonig-dev
-      # - run: sudo docker-php-ext-install zip mysqli pdo pdo_pgsql bz2 bcmath pcntl intl gd mbstring
-      # - run: sudo pecl install redis
-      # - run: sudo docker-php-ext-enable redis
-      - run: composer install
 
-      - run: php vendor/phpunit/phpunit/phpunit
-      - store_test_results:
-          path: tests/_output
-      - store_artifacts:
-          path: tests/_output
+      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
+
+      # composer cache
+      - run: composer install -n --prefer-dist
+
+      # run tests with phpunit or codecept
+      #- run: ./vendor/bin/phpunit
+      # this example uses codecept but you're not limited to it
+      - run: ./vendor/phpunit/phpunit/phpunit

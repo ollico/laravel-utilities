@@ -27,15 +27,6 @@ jobs:
 
       # Download and cache dependencies
 
-      # composer cache
-      - restore_cache:
-          keys:
-          # "composer.json" can be used if "composer.json"
-          # is not committed to the repository.
-          - v1-dependencies-{{ checksum "composer.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
       - run: composer install -n --prefer-dist
 
       - save_cache:
@@ -59,9 +50,4 @@ jobs:
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
       # this example uses codecept but you're not limited to it
-      - run: ./vendor/bin/codecept build
-      - run: ./vendor/bin/codecept run --xml result.xml
-      - store_test_results:
-          path: tests/_output
-      - store_artifacts:
-          path: tests/_output
+      - run: ./vendor/phpunit/phpunit/phpunit

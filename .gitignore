@@ -1,0 +1,10 @@
+/vendor
+/node_modules
+build
+composer.phar
+composer.lock
+docs
+.env.*
+.env
+phpunit.xml
+.phpunit.result.cache

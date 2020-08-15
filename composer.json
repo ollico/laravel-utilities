@@ -1,5 +1,5 @@
 {
-    "name": "ollico/utilities",
+    "name": "ollico/laravel-utilities",
     "description": "A Laravel utilities package.",
     "type": "library",
     "license": "MIT",

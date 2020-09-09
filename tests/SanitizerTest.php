@@ -2,7 +2,7 @@
 
 namespace Ollico\Utilities\Tests;
 
-use Ollico\Utilities\Sanitizer;
+use Ollico\Utilities\Validation\Sanitizer;
 use Orchestra\Testbench\TestCase;
 
 class SanitizerTest extends TestCase

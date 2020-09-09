@@ -158,44 +158,4 @@ return [
         'zu' => 'Zulu',
     ],
 
-    'employment' => [
-        'full-time' => 'Full-Time',
-        'part-time' => 'Part-Time',
-        'student' => 'Student',
-        'retired' => 'Retired',
-        'unemployed' => 'Unemployed',
-    ],
-
-    'ethnicity' => [
-        'white' => 'White',
-        'black-british-black' => 'Black or Black British',
-        'asian-british-asian' => 'Asian or Asian British',
-        'chinese' => 'Chinese',
-        'mixed' => 'Mixed',
-        'other' => 'Other',
-        'declined' => 'Declined',
-    ],
-
-    'sub-ethnicity' => [
-        'british' => 'British',
-        'irish' => 'Irish',
-        'turkish' => 'Turkish',
-        'caribbean' => 'Caribbean',
-        'african' => 'African',
-        'indian' => 'Indian',
-        'pakistani' => 'Pakistani',
-        'bangladeshi' => 'Bangladeshi',
-        'white-black-caribbean' => 'White & Black Caribbean',
-        'wihte-black-african' => 'White & Black African',
-        'white-asian' => 'White & Asian',
-        'other' => 'Other',
-        'none' => 'None',
-        'refused' => 'Refused',
-    ],
-
-    'weight' => [
-        'lbs' => 'Pounds',
-        'st' => 'Stone',
-    ],
-
 ];

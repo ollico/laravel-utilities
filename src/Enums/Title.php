@@ -25,18 +25,4 @@ class Title extends Enum
     {
         return 'laravel-utils::';
     }
-
-    public function crmId(): int
-    {
-        $ids = [
-            static::MR => 1,
-            static::MRS => 2,
-            static::MS => 3,
-            static::MISS => 4,
-            static::DR => 5,
-            static::PROF => 6,
-        ];
-
-        return Arr::get($ids, $this->value(), 0);
-    }
 }

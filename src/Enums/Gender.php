@@ -23,16 +23,4 @@ class Gender extends Enum
     {
         return 'laravel-utils::';
     }
-
-    public function crmId(): int
-    {
-        $ids = [
-            static::MALE => 1,
-            static::FEMALE => 2,
-            static::TRANSGENDER => 4,
-            static::OTHER => 3,
-        ];
-
-        return Arr::get($ids, $this->value(), 0);
-    }
 }

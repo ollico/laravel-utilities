@@ -151,6 +151,6 @@ class Languages extends Enum
 
     public function langKeyPrefix(): string
     {
-        return 'optiiva-utils::';
+        return 'laravel-utils::';
     }
 }

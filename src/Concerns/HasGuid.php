@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 trait HasGuid
 {
-    protected static function bootHasUuid(): void
+    protected static function bootHasGuid(): void
     {
         static::creating(static function ($model) {
             $model->guid = $model->guid ?: Str::uuid()->toString();

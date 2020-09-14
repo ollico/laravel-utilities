@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ollico\Utilities;
+namespace Ollico\Utilities\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 

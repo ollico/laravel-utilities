@@ -12,7 +12,7 @@ trait HasGuid
     protected static function bootHasUuid(): void
     {
         static::creating(static function ($model) {
-            $model->uuid = $model->uuid ?: Str::uuid()->toString();
+            $model->guid = $model->guid ?: Str::uuid()->toString();
         });
     }
 

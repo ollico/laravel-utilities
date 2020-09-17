@@ -1,9 +1,9 @@
 <?php
 
-namespace Ollico\Utilities\Concerns;
+namespace Ollico\Utilities\Filters\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
-use Ollico\Utilities\Filters;
+use Ollico\Utilities\Filters\Filters;
 
 trait HasFilters
 {

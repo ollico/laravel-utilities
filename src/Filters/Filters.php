@@ -1,6 +1,6 @@
 <?php
 
-namespace Ollico\Utilities;
+namespace Ollico\Utilities\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

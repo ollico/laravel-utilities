@@ -8,7 +8,7 @@ use Orchestra\Testbench\TestCase;
 class BreadcrumbTest extends TestCase
 {
     /** @test */
-    function it_can_create_admin_breadcrumbs()
+    public function it_can_create_admin_breadcrumbs()
     {
         $expected = [
             0 => (object) [
@@ -32,7 +32,7 @@ class BreadcrumbTest extends TestCase
     }
 
     /** @test */
-    function it_can_make_home_breadcrumbs()
+    public function it_can_make_home_breadcrumbs()
     {
         $expected = [
             0 => (object) [
@@ -56,7 +56,7 @@ class BreadcrumbTest extends TestCase
     }
 
     /** @test */
-    function it_can_create_breadcrumbs()
+    public function it_can_create_breadcrumbs()
     {
         $expected = [
             0 => (object) [

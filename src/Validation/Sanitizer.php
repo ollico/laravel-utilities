@@ -66,24 +66,28 @@ class Sanitizer
     public function strip($matches)
     {
         $this->value = str_replace(Arr::wrap($matches), '', $this->value);
+
         return $this;
     }
 
     public function replace($matches, $replacement)
     {
         $this->value = str_replace(Arr::wrap($matches), $replacement, $this->value);
+
         return $this;
     }
 
     public function lowercase(): self
     {
         $this->value = mb_strtolower($this->value);
+
         return $this;
     }
 
     public function uppercase(): self
     {
         $this->value = mb_strtoupper($this->value);
+
         return $this;
     }
 

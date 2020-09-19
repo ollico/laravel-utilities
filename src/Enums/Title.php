@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ollico\Utilities\Enums;
 
 use DavidIanBonner\Enumerated\Enum;
-use Illuminate\Support\Arr;
 
 class Title extends Enum
 {

@@ -33,6 +33,7 @@ abstract class Filters
         foreach ($this->getFilters() as $filter => $value) {
             if (method_exists($this, $filter)) {
                 $this->$filter($builder, $value);
+
                 continue;
             }
 

@@ -95,4 +95,14 @@ class Sanitizer
     {
         return $this->strip([' ']);
     }
+
+    public static function integer($value): int
+    {
+        return (int) (new self($value))->stripSpaces()->replace(':', '')->value();
+    }
+
+    public static function trim($value): string
+    {
+        return trim((new self($value))->value());
+    }
 }

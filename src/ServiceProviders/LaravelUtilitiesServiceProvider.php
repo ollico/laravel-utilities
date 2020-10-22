@@ -21,7 +21,11 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
 
         Blueprint::macro('guid', function (): void {
             /** @var \Illuminate\Database\Schema\Blueprint $this */
-            $this->uuid('guid')->index()->default(new Expression('(uuid_generate_v4())'));
+            $this->uuid('guid')->index()->default(
+                config('database.default') === 'pgsql'
+                    ? new Expression('(uuid_generate_v4())')
+                    : null
+            );
         });
     }
 }

@@ -17,6 +17,8 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        include_once __DIR__ . '/../helper.php';
+
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'laravel-utils');
 
         Blueprint::macro('guid', function (): void {

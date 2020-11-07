@@ -5,7 +5,7 @@ use Ollico\Utilities\Loggers\LogAuditableEvent;
 
 declare(strict_types=1);
 
-if (!function_exists('audit_user')) {
+if (! function_exists('audit_user')) {
     function audit_user(
         Model $dimension,
         string $activity,
@@ -15,7 +15,7 @@ if (!function_exists('audit_user')) {
     }
 }
 
-if (!function_exists('audit')) {
+if (! function_exists('audit')) {
     function audit(
         Model $dimension,
         string $activity,

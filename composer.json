@@ -25,6 +25,14 @@
         "phpunit/phpunit": "^8.0",
         "mockery/mockery": "^1.0"
     },
+        "extra": {
+        "laravel": {
+            "providers": [
+                "Ollico\\Utilities\\ServiceProviders\\LaravelUtilitiesServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
     "autoload": {
         "psr-4": {
             "Ollico\\Utilities\\": "src/"

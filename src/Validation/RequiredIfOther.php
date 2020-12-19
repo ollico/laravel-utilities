@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Validation;
 
+use Illuminate\Support\Arr;
 use Ollico\Utilities\Enums\BooleanOther;
 
 class RequiredIfOther
@@ -19,7 +20,7 @@ class RequiredIfOther
     public $length = 5000;
 
     public function __construct(
-        array $data,
+        $data,
         string $key,
         int $length = 5000,
         string $value = BooleanOther::OTHER,
@@ -32,7 +33,7 @@ class RequiredIfOther
         $this->isInArray = $isInArray;
     }
 
-    public static function make(array $data, string $key): self
+    public static function make($data, string $key): self
     {
         return new self($data, $key);
     }
@@ -56,7 +57,7 @@ class RequiredIfOther
         $rules = ['nullable', 'string', 'max:' . $this->length];
 
         if ($this->isInArray) {
-            $rules[] = (new RequiredIfInArray($this->data, $this->key, $this->value))->__toString();
+            $rules[] = (new RequiredIfInArray(Arr::wrap($this->data), $this->value))->__toString();
         } else {
             $rules[] = 'required_if:' . $this->key . ',' . $this->value;
         }

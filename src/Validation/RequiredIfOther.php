@@ -51,7 +51,7 @@ class RequiredIfOther
         return $this;
     }
 
-    public function __toString()
+    public function rules(): array
     {
         $rules = ['nullable', 'string', 'max:' . $this->length];
 
@@ -61,6 +61,11 @@ class RequiredIfOther
             $rules[] = 'required_if:' . $this->key . ',' . $this->value;
         }
 
-        return implode('|', $rules);
+        return $rules;
+    }
+
+    public function __toString()
+    {
+        return implode('|', $this->rules());
     }
 }

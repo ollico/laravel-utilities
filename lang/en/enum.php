@@ -1,5 +1,12 @@
 <?php
 
+use Ollico\Utilities\Enums\Boolean;
+use Ollico\Utilities\Enums\BooleanLoose;
+use Ollico\Utilities\Enums\BooleanMaybe;
+use Ollico\Utilities\Enums\BooleanOther;
+use Ollico\Utilities\Enums\BooleanOptional;
+use Ollico\Utilities\Enums\BooleanOptionalUnsure;
+
 declare(strict_types=1);
 
 return [
@@ -156,6 +163,43 @@ return [
         'yo' => 'Yoruba',
         'zh' => 'Chinese',
         'zu' => 'Zulu',
+    ],
+
+
+    'boolean-maybe' => [
+        BooleanMaybe::YES => 'Yes',
+        BooleanMaybe::NO => 'No',
+        BooleanMaybe::MAYBE => 'Maybe',
+    ],
+
+    'boolean-other' => [
+        BooleanOther::YES => 'Yes',
+        BooleanOther::NO => 'No',
+        BooleanOther::OTHER => 'Other',
+    ],
+
+    'boolean-loose' => [
+        BooleanLoose::YES => 'Yes',
+        BooleanLoose::NO => 'No',
+        BooleanLoose::UNSURE => 'Unsure',
+    ],
+
+    'boolean' => [
+        Boolean::YES => 'Yes',
+        Boolean::NO => 'No',
+    ],
+
+    'boolean-optional' => [
+        BooleanOptional::YES => 'Yes',
+        BooleanOptional::NO => 'No',
+        BooleanOptional::PREFER_NOT => 'Prefer not to say',
+    ],
+
+    'boolean-optional-unsure' => [
+        BooleanOptionalUnsure::YES => 'Yes',
+        BooleanOptionalUnsure::NO => 'No',
+        BooleanOptionalUnsure::PREFER_NOT => 'Prefer not to say',
+        BooleanOptionalUnsure::DONT_KNOW => 'Don\'t know',
     ],
 
 ];

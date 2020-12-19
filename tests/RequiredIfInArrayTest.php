@@ -10,16 +10,19 @@ class RequiredIfInArrayTest extends TestCase
     /** @test */
     public function it_returns_the_valid_rules()
     {
-        $rules = (new RequiredIfInArray(['foo' => ['value']], 'foo', 'value'))->__toString();
+        $rules = (new RequiredIfInArray(['value'], 'value'))->__toString();
         $this->assertEquals('required', $rules);
 
-        $rules = (new RequiredIfInArray(['foo' => ['not_value']], 'foo', 'value'))->__toString();
+        $rules = (new RequiredIfInArray(['not_value'], 'value'))->__toString();
         $this->assertEquals('', $rules);
 
-        $rules = (new RequiredIfInArray(['foo' => null], 'foo', 'value'))->__toString();
+        $rules = (new RequiredIfInArray([null], 'value'))->__toString();
         $this->assertEquals('', $rules);
 
-        $rules = (new RequiredIfInArray(['foo' => ['']], 'foo', 'value'))->__toString();
+        $rules = (new RequiredIfInArray([''], 'value'))->__toString();
+        $this->assertEquals('', $rules);
+
+        $rules = (new RequiredIfInArray([], 'value'))->__toString();
         $this->assertEquals('', $rules);
     }
 }

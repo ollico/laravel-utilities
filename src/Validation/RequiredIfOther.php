@@ -40,12 +40,14 @@ class RequiredIfOther
     public function otherValue(string $value): self
     {
         $this->value = $value;
+
         return $this;
     }
 
     public function inArray(): self
     {
         $this->isInArray = true;
+
         return $this;
     }
 

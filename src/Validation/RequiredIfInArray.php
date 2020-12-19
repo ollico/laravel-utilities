@@ -25,7 +25,7 @@ class RequiredIfInArray
     {
         $values = Arr::get($this->data, $this->key, []);
 
-        if (!is_array($values)) {
+        if (! is_array($values)) {
             return '';
         }
 

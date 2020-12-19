@@ -2,14 +2,14 @@
 
 namespace Ollico\Utilities\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Ollico\Utilities\Validation\RequiredIfOther;
+use Orchestra\Testbench\TestCase;
 
 class RequiredIfOtherTest extends TestCase
 {
     /** @test */
     public function it_can_sanitize_phone_numbers()
-    {    
+    {
         $rules = RequiredIfOther::make(['foo' => 'other'], 'foo')->__toString();
         $this->assertEquals('nullable|string|max:5000|required_if:foo,other', $rules);
 
@@ -28,5 +28,4 @@ class RequiredIfOtherTest extends TestCase
         $rules = RequiredIfOther::make(['foo' => ['other_value']], 'foo')->inArray()->otherValue('other_value')->__toString();
         $this->assertEquals('nullable|string|max:5000|required', $rules);
     }
-
 }

@@ -2,8 +2,8 @@
 
 namespace Ollico\Utilities\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Ollico\Utilities\Validation\RequiredIfInArray;
+use Orchestra\Testbench\TestCase;
 
 class RequiredIfInArrayTest extends TestCase
 {
@@ -16,5 +16,4 @@ class RequiredIfInArrayTest extends TestCase
         $rules = (new RequiredIfInArray(['foo' => ['not_value']], 'foo', 'value'))->__toString();
         $this->assertEquals('', $rules);
     }
-
 }

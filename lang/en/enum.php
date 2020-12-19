@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use Ollico\Utilities\Enums\Boolean;
 use Ollico\Utilities\Enums\BooleanLoose;
 use Ollico\Utilities\Enums\BooleanMaybe;
-use Ollico\Utilities\Enums\BooleanOther;
 use Ollico\Utilities\Enums\BooleanOptional;
 use Ollico\Utilities\Enums\BooleanOptionalUnsure;
-
-declare(strict_types=1);
+use Ollico\Utilities\Enums\BooleanOther;
 
 return [
 

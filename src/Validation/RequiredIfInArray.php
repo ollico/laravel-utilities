@@ -8,9 +8,9 @@ use Illuminate\Support\Arr;
 
 class RequiredIfInArray
 {
-    public array $data = [];
+    public $data = [];
 
-    public string $key;
+    public $key;
 
     public $value;
 

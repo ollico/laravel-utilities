@@ -8,15 +8,15 @@ use Ollico\Utilities\Enums\BooleanOther;
 
 class RequiredIfOther
 {
-    public array $data = [];
+    public $data = [];
 
-    public string $key;
+    public $key;
 
-    public string $value;
+    public $value;
 
-    public bool $isInArray = false;
+    public $isInArray = false;
 
-    public int $length = 5000;
+    public $length = 5000;
 
     public function __construct(
         array $data,

@@ -19,7 +19,7 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'laravel-utils');
+        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'laravel-utils');
 
         Blueprint::macro('guid', function (): void {
             /** @var \Illuminate\Database\Schema\Blueprint $this */

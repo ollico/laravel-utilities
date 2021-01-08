@@ -8,6 +8,7 @@ use Ollico\Utilities\Enums\BooleanMaybe;
 use Ollico\Utilities\Enums\BooleanOptional;
 use Ollico\Utilities\Enums\BooleanOptionalUnsure;
 use Ollico\Utilities\Enums\BooleanOther;
+use Ollico\Utilities\Enums\BooleanPartial;
 
 return [
 
@@ -176,6 +177,12 @@ return [
         BooleanOther::YES => 'Yes',
         BooleanOther::NO => 'No',
         BooleanOther::OTHER => 'Other',
+    ],
+
+    'boolean-partial' => [
+        BooleanPartial::YES => 'Yes',
+        BooleanPartial::NO => 'No',
+        BooleanPartial::PARTIAL => 'Partial',
     ],
 
     'boolean-loose' => [

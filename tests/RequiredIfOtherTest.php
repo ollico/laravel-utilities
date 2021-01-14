@@ -22,10 +22,10 @@ class RequiredIfOtherTest extends TestCase
         $rules = RequiredIfOther::make(null, 'foo')->inArray()->__toString();
         $this->assertEquals('nullable|string|max:5000|', $rules);
 
-        $rules = RequiredIfOther::make(['other'], 'foo')->inArray()->__toString();
+        $rules = RequiredIfOther::make(['foo' => ['other']], 'foo')->inArray()->__toString();
         $this->assertEquals('nullable|string|max:5000|required', $rules);
 
-        $rules = RequiredIfOther::make(['other_value'], 'foo')->inArray()->otherValue('other_value')->__toString();
+        $rules = RequiredIfOther::make(['foo' => ['other_value']], 'foo')->inArray()->otherValue('other_value')->__toString();
         $this->assertEquals('nullable|string|max:5000|required', $rules);
     }
 }

@@ -57,7 +57,10 @@ class RequiredIfOther
         $rules = ['nullable', 'string', 'max:' . $this->length];
 
         if ($this->isInArray) {
-            $rules[] = (new RequiredIfInArray(Arr::wrap($this->data), $this->value))->__toString();
+            $rules[] = (new RequiredIfInArray(
+                Arr::wrap(Arr::get($this->data, $this->key, [])),
+                $this->value
+            ))->__toString();
         } else {
             $rules[] = 'required_if:' . $this->key . ',' . $this->value;
         }

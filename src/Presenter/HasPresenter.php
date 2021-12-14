@@ -6,7 +6,7 @@ namespace Ollico\Utilities\Presenter;
 
 trait HasPresenter
 {
-    protected ?Presenter $cachedPresenterInstance = null;
+    protected $cachedPresenterInstance = null;
 
     public function present(): Presenter
     {

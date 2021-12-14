@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class Presenter
 {
-    protected Model $model;
+    protected $model;
 
     public function __construct(Model $model)
     {

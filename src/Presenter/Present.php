@@ -41,7 +41,9 @@ class Present
 
     protected function mapCollection(Collection $collection): Collection
     {
-        return $collection->map(fn (Presentable $item) => $item->present());
+        return $collection->map(function ($item) {
+            return $item->present();
+        });
     }
 
     protected function isPresentable($presentable): bool

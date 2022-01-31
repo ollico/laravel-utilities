@@ -28,4 +28,6 @@ abstract class Presenter
     }
 
     abstract public function instanceName(): string;
+
+    abstract public function toArray(): array;
 }

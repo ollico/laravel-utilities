@@ -10,10 +10,12 @@ use Illuminate\Support\Collection;
 class Present
 {
     protected $presentable;
+    protected $transformToArray;
 
-    public function __construct($presentable)
+    public function __construct($presentable, $transformToArray)
     {
         $this->presentable = $presentable;
+        $this->transformToArray = $transformToArray;
     }
 
     public function transform()
@@ -42,6 +44,10 @@ class Present
     protected function mapCollection(Collection $collection): Collection
     {
         return $collection->map(function ($item) {
+            if ($this->transformToArray) {
+                return $item->present()->toArray();
+            }
+
             return $item->present();
         });
     }
@@ -51,8 +57,8 @@ class Present
         return $presentable instanceof Presentable;
     }
 
-    public static function make($presentable)
+    public static function make($presentable, $transformToArray = false)
     {
-        return (new self($presentable))->transform();
+        return (new self($presentable, $transformToArray))->transform();
     }
 }

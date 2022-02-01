@@ -43,7 +43,7 @@ class Present implements Arrayable
     protected function mapCollection(Collection $collection): Collection
     {
         return $collection->map(function (Presentable $item) {
-            $item->present();
+            return $item->present();
         });
     }
 

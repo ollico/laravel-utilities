@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class Presenter implements Arrayable
 {
-    /** @var Model $model */
     protected $model;
 
     public function __construct(Model $model)

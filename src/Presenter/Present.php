@@ -42,7 +42,9 @@ class Present implements Arrayable
 
     protected function mapCollection(Collection $collection): Collection
     {
-        return $collection->map(fn (Presentable $item) => $item->present());
+        return $collection->map(function (Presentable $item) {
+            $item->present();
+        });
     }
 
     protected function isPresentable($presentable): bool

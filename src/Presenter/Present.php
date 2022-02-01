@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Presenter;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
-class Present
+class Present implements Arrayable
 {
     protected $presentable;
-    protected $transformToArray;
 
-    public function __construct($presentable, $transformToArray)
+    public function __construct($presentable)
     {
         $this->presentable = $presentable;
-        $this->transformToArray = $transformToArray;
     }
 
     public function transform()
@@ -43,13 +42,7 @@ class Present
 
     protected function mapCollection(Collection $collection): Collection
     {
-        return $collection->map(function ($item) {
-            if ($this->transformToArray) {
-                return $item->present()->toArray();
-            }
-
-            return $item->present();
-        });
+        return $collection->map(fn (Presentable $item) => $item->present());
     }
 
     protected function isPresentable($presentable): bool
@@ -57,8 +50,19 @@ class Present
         return $presentable instanceof Presentable;
     }
 
-    public static function make($presentable, $transformToArray = false)
+    public function toArray()
     {
-        return (new self($presentable, $transformToArray))->transform();
+        $transformed = $this->transform();
+
+        if ($transformed instanceof Collection) {
+            return $transformed->toArray();
+        }
+
+        return $transformed;
+    }
+
+    public static function make($presentable)
+    {
+        return (new self($presentable))->transform();
     }
 }

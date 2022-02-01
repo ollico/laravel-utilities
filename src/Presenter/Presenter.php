@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Ollico\Utilities\Presenter;
 
 use Exception;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;
 
-abstract class Presenter
+abstract class Presenter implements Arrayable
 {
-    protected $model;
+    protected Model $model;
 
     public function __construct(Model $model)
     {
@@ -27,7 +28,10 @@ abstract class Presenter
         return $this->model;
     }
 
-    abstract public function instanceName(): string;
+    public function toArray()
+    {
+        return $this->model->toArray();
+    }
 
-    abstract public function toArray(): array;
+    abstract public function instanceName(): string;
 }

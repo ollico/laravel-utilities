@@ -21,4 +21,11 @@ class TestPresenter extends Presenter
     {
         return '1234-5678-90';
     }
+
+    public function toArray(): array
+    {
+        return [
+            'guid' => $this->guid(),
+        ];
+    }
 }

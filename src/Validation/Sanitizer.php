@@ -33,7 +33,7 @@ class Sanitizer
     public static function phone($value): string
     {
         return (new self($value))
-            ->replace(['+44(0)', '+0044', '0044', '+44'], 0)
+            ->replace(['+44(0)', '+0044', '0044', '+44'], '0')
             ->strip(['(0)', '(', ')'])
             ->stripSpaces()
             ->uppercase()

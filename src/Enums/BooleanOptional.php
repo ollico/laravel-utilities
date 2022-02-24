@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Enums;
 
-use DavidIanBonner\Enumerated\Enum;
+use DavidIanBonner\Enumerated\Enumerated;
+use DavidIanBonner\Enumerated\HasEnumeration;
 
-class BooleanOptional extends Enum
+enum BooleanOptional: string implements Enumerated
 {
-    public const YES = 'yes';
-    public const NO = 'no';
-    public const PREFER_NOT = 'prefer_not';
-
-    public function langKey(): string
-    {
-        return 'boolean-optional';
+    use HasEnumeration, Concerns\HasKeyPrefix {
+        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
     }
 
-    public function langKeyPrefix(): string
+    case YES = 'yes';
+    case NO = 'no';
+    case PREFER_NOT = 'prefer_not';
+
+    public static function key(): string
     {
-        return 'laravel-utils::';
+        return 'boolean-optional';
     }
 }

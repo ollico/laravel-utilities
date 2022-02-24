@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Enums;
 
-use DavidIanBonner\Enumerated\Enum;
+use DavidIanBonner\Enumerated\Enumerated;
+use DavidIanBonner\Enumerated\HasEnumeration;
 
-class Languages extends Enum
+enum Languages: string implements Enumerated
 {
+    use HasEnumeration, Concerns\HasKeyPrefix {
+        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
+    }
+
     public const EN = 'en';
     public const AA = 'aa';
     public const AB = 'ab';
@@ -144,13 +149,8 @@ class Languages extends Enum
     public const ZH = 'zh';
     public const ZU = 'zu';
 
-    public function langKey(): string
+    public static function key(): string
     {
         return 'languages';
-    }
-
-    public function langKeyPrefix(): string
-    {
-        return 'laravel-utils::';
     }
 }

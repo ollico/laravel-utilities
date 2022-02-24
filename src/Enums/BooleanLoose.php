@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Enums;
 
-use DavidIanBonner\Enumerated\Enum;
+use DavidIanBonner\Enumerated\Enumerated;
+use DavidIanBonner\Enumerated\HasEnumeration;
 
-class BooleanLoose extends Enum
+enum BooleanLoose: string implements Enumerated
 {
-    public const YES = 'yes';
-    public const NO = 'no';
-    public const UNSURE = 'unsure';
-
-    public function langKey(): string
-    {
-        return 'boolean-loose';
+    use HasEnumeration, Concerns\HasKeyPrefix {
+        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
     }
 
-    public function langKeyPrefix(): string
+    case YES = 'yes';
+    case NO = 'no';
+    case UNSURE = 'unsure';
+
+    public static function key(): string
     {
-        return 'laravel-utils::';
+        return 'boolean-loose';
     }
 }

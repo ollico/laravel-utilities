@@ -23,12 +23,12 @@ class RequiredIfOther
         $data,
         string $key,
         int $length = 5000,
-        string $value = BooleanOther::OTHER,
+        string|BooleanOther $value = BooleanOther::OTHER,
         bool $isInArray = false
     ) {
         $this->data = $data;
         $this->key = $key;
-        $this->value = $value;
+        $this->value = $value instanceof BooleanOther ? $value->value : $value;
         $this->length = $length;
         $this->isInArray = $isInArray;
     }

@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Enums;
 
-use DavidIanBonner\Enumerated\Enum;
+use DavidIanBonner\Enumerated\Enumerated;
+use DavidIanBonner\Enumerated\HasEnumeration;
 
-class Gender extends Enum
+enum Gender: string implements Enumerated
 {
-    public const MALE = 'male';
-    public const FEMALE = 'female';
-    public const TRANSGENDER = 'transgender';
-    public const OTHER = 'other';
-
-    public function langKey(): string
-    {
-        return 'gender';
+    use HasEnumeration, Concerns\HasKeyPrefix {
+        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
     }
 
-    public function langKeyPrefix(): string
+    case MALE = 'male';
+    case FEMALE = 'female';
+    case TRANSGENDER = 'transgender';
+    case OTHER = 'other';
+
+    public static function key(): string
     {
-        return 'laravel-utils::';
+        return 'gender';
     }
 }

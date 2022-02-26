@@ -39,7 +39,7 @@ class Present implements Arrayable
         }
 
         if ($this->presentable instanceof CursorPaginator) {
-            return $this->presentable->setItems(
+            return $this->presentable->setCollection(
                 $this->mapCollection($this->presentable->getCollection())
             );
         }

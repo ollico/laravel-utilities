@@ -9,9 +9,7 @@ use DavidIanBonner\Enumerated\HasEnumeration;
 
 enum Gender: string implements Enumerated
 {
-    use HasEnumeration, Concerns\HasKeyPrefix {
-        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
-    }
+    use HasEnumeration;
 
     case MALE = 'male';
     case FEMALE = 'female';
@@ -21,5 +19,10 @@ enum Gender: string implements Enumerated
     public static function key(): string
     {
         return 'gender';
+    }
+
+    public function langKeyPrefix(): string
+    {
+        return 'laravel-utils::';
     }
 }

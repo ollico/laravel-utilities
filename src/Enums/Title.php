@@ -9,9 +9,7 @@ use DavidIanBonner\Enumerated\HasEnumeration;
 
 enum Title: string implements Enumerated
 {
-    use HasEnumeration, Concerns\HasKeyPrefix {
-        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
-    }
+    use HasEnumeration;
 
     public const MR = 'mr';
     public const MRS = 'mrs';
@@ -23,5 +21,10 @@ enum Title: string implements Enumerated
     public static function key(): string
     {
         return 'title';
+    }
+
+    public function langKeyPrefix(): string
+    {
+        return 'laravel-utils::';
     }
 }

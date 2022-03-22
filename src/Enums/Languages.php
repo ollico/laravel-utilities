@@ -9,9 +9,7 @@ use DavidIanBonner\Enumerated\HasEnumeration;
 
 enum Languages: string implements Enumerated
 {
-    use HasEnumeration, Concerns\HasKeyPrefix {
-        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
-    }
+    use HasEnumeration;
 
     public const EN = 'en';
     public const AA = 'aa';
@@ -152,5 +150,10 @@ enum Languages: string implements Enumerated
     public static function key(): string
     {
         return 'languages';
+    }
+
+    public function langKeyPrefix(): string
+    {
+        return 'laravel-utils::';
     }
 }

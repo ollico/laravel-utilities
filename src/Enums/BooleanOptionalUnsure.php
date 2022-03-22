@@ -9,9 +9,7 @@ use DavidIanBonner\Enumerated\HasEnumeration;
 
 enum BooleanOptionalUnsure: string implements Enumerated
 {
-    use HasEnumeration, Concerns\HasKeyPrefix {
-        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
-    }
+    use HasEnumeration;
 
     case YES = 'yes';
     case NO = 'no';
@@ -21,5 +19,10 @@ enum BooleanOptionalUnsure: string implements Enumerated
     public static function key(): string
     {
         return 'boolean-optional-unsure';
+    }
+
+    public function langKeyPrefix(): string
+    {
+        return 'laravel-utils::';
     }
 }

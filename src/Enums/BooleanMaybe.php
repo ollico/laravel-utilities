@@ -9,9 +9,7 @@ use DavidIanBonner\Enumerated\HasEnumeration;
 
 enum BooleanMaybe: string implements Enumerated
 {
-    use HasEnumeration, Concerns\HasKeyPrefix {
-        Concerns\HasKeyPrefix::keyPrefix insteadof HasEnumeration;
-    }
+    use HasEnumeration;
 
     case YES = 'yes';
     case NO = 'no';
@@ -20,5 +18,10 @@ enum BooleanMaybe: string implements Enumerated
     public static function key(): string
     {
         return 'boolean-maybe';
+    }
+
+    public function langKeyPrefix(): string
+    {
+        return 'laravel-utils::';
     }
 }

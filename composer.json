@@ -1,46 +1,46 @@
 {
-    "name": "ollico/laravel-utilities",
-    "description": "A Laravel utilities package.",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "David Bonner",
-            "email": "david@ollicosoftware.com"
-        },
-        {
-            "name": "Keiron McGivern",
-            "email": "keironmcgivern@ollicosoftware.com"
-        }
-    ],
-    "require": {
-        "php": "^7.3|^8.0",
-        "illuminate/contracts": "^6.0|^7.0|^8.0",
-        "illuminate/support": "^6.0|^7.0|^8.0",
-        "illuminate/database": "^6.0|^7.0|^8.0",
-        "davidianbonner/enumerated": "^3.0|^4.0"
+  "name": "ollico/laravel-utilities",
+  "description": "A Laravel utilities package.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Bonner",
+      "email": "david@ollicosoftware.com"
     },
-    "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.0"
-    },
-        "extra": {
-        "laravel": {
-            "providers": [
-                "Ollico\\Utilities\\ServiceProviders\\LaravelUtilitiesServiceProvider"
-            ],
-            "aliases": {}
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Ollico\\Utilities\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Ollico\\Utilities\\Tests\\": "tests/"
-        }
+    {
+      "name": "Keiron McGivern",
+      "email": "keironmcgivern@ollicosoftware.com"
     }
+  ],
+  "require": {
+    "php": "^7.3|^8.0",
+    "illuminate/contracts": "^6.0|^7.0|^8.0|^9.5",
+    "illuminate/support": "^6.0|^7.0|^8.0|^9.5",
+    "illuminate/database": "^6.0|^7.0|^8.0|^9.5",
+    "davidianbonner/enumerated": "^5.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^7.0",
+    "phpunit/phpunit": "^9.0",
+    "mockery/mockery": "^1.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ollico\\Utilities\\ServiceProviders\\LaravelUtilitiesServiceProvider"
+      ],
+      "aliases": {}
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Ollico\\Utilities\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ollico\\Utilities\\Tests\\": "tests/"
+    }
+  }
 }

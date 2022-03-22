@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Enums;
 
-use DavidIanBonner\Enumerated\Enum;
+use DavidIanBonner\Enumerated\Enumerated;
+use DavidIanBonner\Enumerated\HasEnumeration;
 
-class BooleanMaybe extends Enum
+enum BooleanMaybe: string implements Enumerated
 {
-    public const YES = 'yes';
-    public const NO = 'no';
-    public const MAYBE = 'maybe';
+    use HasEnumeration;
 
-    public function langKey(): string
+    case YES = 'yes';
+    case NO = 'no';
+    case MAYBE = 'maybe';
+
+    public static function key(): string
     {
         return 'boolean-maybe';
     }

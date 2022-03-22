@@ -4,16 +4,19 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Enums;
 
-use DavidIanBonner\Enumerated\Enum;
+use DavidIanBonner\Enumerated\Enumerated;
+use DavidIanBonner\Enumerated\HasEnumeration;
 
-class BooleanOptionalUnsure extends Enum
+enum BooleanOptionalUnsure: string implements Enumerated
 {
-    public const YES = 'yes';
-    public const NO = 'no';
-    public const PREFER_NOT = 'prefer_not';
-    public const DONT_KNOW = 'dont_know';
+    use HasEnumeration;
 
-    public function langKey(): string
+    case YES = 'yes';
+    case NO = 'no';
+    case PREFER_NOT = 'prefer_not';
+    case DONT_KNOW = 'dont_know';
+
+    public static function key(): string
     {
         return 'boolean-optional-unsure';
     }

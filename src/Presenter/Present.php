@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ollico\Utilities\Presenter;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Pagination\CursorPaginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
@@ -32,6 +33,12 @@ class Present implements Arrayable
         }
 
         if ($this->presentable instanceof LengthAwarePaginator) {
+            return $this->presentable->setCollection(
+                $this->mapCollection($this->presentable->getCollection())
+            );
+        }
+
+        if ($this->presentable instanceof CursorPaginator) {
             return $this->presentable->setCollection(
                 $this->mapCollection($this->presentable->getCollection())
             );

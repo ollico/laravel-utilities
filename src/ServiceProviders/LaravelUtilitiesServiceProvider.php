@@ -47,6 +47,10 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
             __DIR__ . '/../config/release-notification.php',
             'release-notification'
         );
+
+        $this->commands([
+            Ollico\Utilities\Commands\SendReleaseNotification::class
+        ]);
     }
 
     protected function registerRules(): void

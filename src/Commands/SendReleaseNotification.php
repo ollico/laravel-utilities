@@ -6,9 +6,9 @@ namespace Ollico\Utilities\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
-use Ollico\Utilities\Mail\SendReleaseNotification;
+use Ollico\Utilities\Mail\SendReleaseNotification as SendMail;
 
-class AnonymizeUserDataCommand extends Command
+class SendReleaseNotification extends Command
 {
     protected $signature = 'system:send-release-notification';
 
@@ -17,7 +17,7 @@ class AnonymizeUserDataCommand extends Command
     public function handle()
     {
         if (config('ollico.release_notifications', false)) {
-            Mail::queue(SendReleaseNotification::class)->onQueue('mail');
+            Mail::queue(SendMail::class)->onQueue('mail');
         }
     }
 }

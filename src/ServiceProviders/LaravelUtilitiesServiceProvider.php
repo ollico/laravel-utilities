@@ -30,7 +30,23 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
             );
         });
 
+        $this->loadViewsFrom(__DIR__ . '/../views', 'utils');
+
+        $this->publishes([
+            __DIR__ . '/../config/release-notification.php' => config_path(
+                'release-notification.php'
+            ),
+        ], 'config');
+
         $this->registerRules();
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/release-notification.php',
+            'release-notification'
+        );
     }
 
     protected function registerRules(): void

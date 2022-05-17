@@ -16,8 +16,10 @@ class SendReleaseNotification extends Command
 
     public function handle()
     {
-        if (config('ollico.release_notifications', false)) {
-            Mail::queue(SendMail::class)->onQueue('mail');
+        if (config('ollico.utils.release_notifications.enabled')) {
+            Mail::queue(
+                (new SendMail())->onQueue(config('ollico.utils.release_notifications.queue'))
+            );
         }
     }
 }

@@ -33,27 +33,31 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../views', 'utils');
 
-        $this->publishes([
-            __DIR__ . '/../config/release-notification.php' => config_path(
-                'release-notification.php'
-            ),
-        ], 'config');
+        $this->registerConfig();
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                SendReleaseNotification::class,
-            ]);
-        }
+        $this->registerCommands();
 
         $this->registerRules();
     }
 
-    public function register()
+    protected function registerCommands(): void
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/release-notification.php',
-            'release-notification'
-        );
+        if (!$this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->commands([
+            SendReleaseNotification::class,
+        ]);
+    }
+
+    protected function registerConfig(): void
+    {
+        $this->publishes([
+            $this->packagePath('config/config.php') => config_path('ollico/config.php')
+        ], 'config');
+
+        $this->mergeConfigFrom($this->packagePath('config/config.php'), 'ollico.utils');
     }
 
     protected function registerRules(): void
@@ -61,5 +65,10 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
         Rule::macro('requiredIfInArray', function (array $data, string $key, $value) {
             return new RequiredIfInArray($data, $key, $value);
         });
+    }
+
+    protected function packagePath($path = ''): string
+    {
+        return sprintf('%s/../../%s', __DIR__, $path);
     }
 }

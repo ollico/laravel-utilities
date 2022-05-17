@@ -7,6 +7,7 @@ namespace Ollico\Utilities\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Ollico\Utilities\Helpers\AppVersion;
 
 class SendReleaseNotification extends Mailable
 {
@@ -15,8 +16,10 @@ class SendReleaseNotification extends Mailable
     public function build()
     {
         return $this
-            ->to(config('ollico.emails'))
-            ->subject('Release notification')
-            ->markdown('utils::release-notifications');
+            ->to(config('ollico.utils.release_notifications.emails'))
+            ->subject('Notification of release')
+            ->markdown('utils::release-notifications', [
+                'version' => AppVersion::retrieve(),
+            ]);
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rule;
+use Ollico\Utilities\Commands\SendReleaseNotification;
 use Ollico\Utilities\Validation\RequiredIfInArray;
 
 class LaravelUtilitiesServiceProvider extends ServiceProvider
@@ -38,6 +39,12 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
             ),
         ], 'config');
 
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SendReleaseNotification::class,
+            ]);
+        }
+
         $this->registerRules();
     }
 
@@ -47,10 +54,6 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
             __DIR__ . '/../config/release-notification.php',
             'release-notification'
         );
-
-        $this->commands([
-            Ollico\Utilities\Commands\SendReleaseNotification::class
-        ]);
     }
 
     protected function registerRules(): void

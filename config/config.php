@@ -2,6 +2,10 @@
 
 return [
 
+    'prefix' => env('UTILS_ROUTE_PREFIX', 'ollicoUtils'),
+
+    'middleware' => env('UTILS_ROUTE_MIDDLEWARE', 'web'),
+
     'release_notifications' => [
 
         'emails' => [],

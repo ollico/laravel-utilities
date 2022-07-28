@@ -6,6 +6,7 @@ namespace Ollico\Utilities\ServiceProviders;
 
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rule;
 use Ollico\Utilities\Commands\SendReleaseNotification;
@@ -31,7 +32,9 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
             );
         });
 
-        $this->loadViewsFrom(__DIR__ . '/../views', 'utils');
+        $this->loadViewsFrom($this->packagePath('views'), 'utils');
+
+        $this->registerRoutes();
 
         $this->registerConfig();
 
@@ -70,5 +73,20 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
     protected function packagePath($path = ''): string
     {
         return sprintf('%s/../../%s', __DIR__, $path);
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom($this->packagePath('routes/web.php'));
+        });
+    }
+
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => config('ollico.utils.prefix'),
+            'middleware' => config('ollico.utils.middleware'),
+        ];
     }
 }

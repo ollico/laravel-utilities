@@ -74,7 +74,7 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
 
     protected function registerRoutes(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
+        $this->loadRoutesFrom(__DIR__. ' /../../routes/routes.php');
     }
 
     protected function packagePath($path = ''): string

@@ -168,45 +168,45 @@ return [
 
 
     'boolean-maybe' => [
-        BooleanMaybe::YES => 'Yes',
-        BooleanMaybe::NO => 'No',
-        BooleanMaybe::MAYBE => 'Maybe',
+        BooleanMaybe::YES->value => 'Yes',
+        BooleanMaybe::NO->value => 'No',
+        BooleanMaybe::MAYBE->value => 'Maybe',
     ],
 
     'boolean-other' => [
-        BooleanOther::YES => 'Yes',
-        BooleanOther::NO => 'No',
-        BooleanOther::OTHER => 'Other',
+        BooleanOther::YES->value => 'Yes',
+        BooleanOther::NO->value => 'No',
+        BooleanOther::OTHER->value => 'Other',
     ],
 
     'boolean-partial' => [
-        BooleanPartial::YES => 'Yes',
-        BooleanPartial::NO => 'No',
-        BooleanPartial::PARTIAL => 'Partial',
+        BooleanPartial::YES->value => 'Yes',
+        BooleanPartial::NO->value => 'No',
+        BooleanPartial::PARTIAL->value => 'Partial',
     ],
 
     'boolean-loose' => [
-        BooleanLoose::YES => 'Yes',
-        BooleanLoose::NO => 'No',
-        BooleanLoose::UNSURE => 'Unsure',
+        BooleanLoose::YES->value => 'Yes',
+        BooleanLoose::NO->value => 'No',
+        BooleanLoose::UNSURE->value => 'Unsure',
     ],
 
     'boolean' => [
-        Boolean::YES => 'Yes',
-        Boolean::NO => 'No',
+        Boolean::YES->value => 'Yes',
+        Boolean::NO->value => 'No',
     ],
 
     'boolean-optional' => [
-        BooleanOptional::YES => 'Yes',
-        BooleanOptional::NO => 'No',
-        BooleanOptional::PREFER_NOT => 'Prefer not to say',
+        BooleanOptional::YES->value => 'Yes',
+        BooleanOptional::NO->value => 'No',
+        BooleanOptional::PREFER_NOT->value => 'Prefer not to say',
     ],
 
     'boolean-optional-unsure' => [
-        BooleanOptionalUnsure::YES => 'Yes',
-        BooleanOptionalUnsure::NO => 'No',
-        BooleanOptionalUnsure::PREFER_NOT => 'Prefer not to say',
-        BooleanOptionalUnsure::DONT_KNOW => 'Don\'t know',
+        BooleanOptionalUnsure::YES->value => 'Yes',
+        BooleanOptionalUnsure::NO->value => 'No',
+        BooleanOptionalUnsure::PREFER_NOT->value => 'Prefer not to say',
+        BooleanOptionalUnsure::DONT_KNOW->value => 'Don\'t know',
     ],
 
 ];

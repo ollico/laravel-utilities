@@ -27,7 +27,7 @@ abstract class Filters
     {
         foreach ($this->globalFilters as $filter) {
             if (method_exists($this, $filter)) {
-                $this->$filter($builder, $this->request->input($filter));
+                $this->$filter($builder);
             }
         }
 

@@ -50,4 +50,9 @@ abstract class Filters
     {
         return array_filter($this->request->only($this->filters));
     }
+
+    public function setFilters(array $filters): void
+    {
+        $this->filters = $filters;
+    }
 }

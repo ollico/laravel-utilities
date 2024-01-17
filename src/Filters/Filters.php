@@ -4,6 +4,7 @@ namespace Ollico\Utilities\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 abstract class Filters
@@ -26,7 +27,7 @@ abstract class Filters
     {
         foreach ($this->globalFilters as $filter) {
             if (method_exists($this, $filter)) {
-                $this->$filter($builder);
+                $this->$filter($builder, Arr::get($this->getFilters(), $filter));
             }
         }
 
@@ -49,10 +50,5 @@ abstract class Filters
     public function getFilters(): array
     {
         return array_filter($this->request->only($this->filters));
-    }
-
-    public function setFilters(array $filters): void
-    {
-        $this->filters = $filters;
     }
 }

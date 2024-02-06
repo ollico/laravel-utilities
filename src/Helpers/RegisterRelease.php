@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Ollico\Utilities\Helpers;
 
-use Illuminate\Support\Facades\Cache;
-
 trait RegisterRelease
 {
     public function registerSentryRelease(): void

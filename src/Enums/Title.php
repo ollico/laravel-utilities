@@ -6,25 +6,24 @@ namespace Ollico\Utilities\Enums;
 
 use DavidIanBonner\Enumerated\Enumerated;
 use DavidIanBonner\Enumerated\HasEnumeration;
+use Ollico\Utilities\Enums\Concerns\HasKeyPrefix;
 
 enum Title: string implements Enumerated
 {
     use HasEnumeration;
+    use HasKeyPrefix {
+        HasKeyPrefix::keyPrefix insteadof HasEnumeration;
+    }
 
-    public const MR = 'mr';
-    public const MRS = 'mrs';
-    public const MS = 'ms';
-    public const MISS = 'miss';
-    public const DR = 'dr';
-    public const PROF = 'prof';
+    case MR = 'mr';
+    case MRS = 'mrs';
+    case MS = 'ms';
+    case MISS = 'miss';
+    case DR = 'dr';
+    case PROF = 'prof';
 
     public static function key(): string
     {
         return 'title';
-    }
-
-    public function langKeyPrefix(): string
-    {
-        return 'laravel-utils::';
     }
 }

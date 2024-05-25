@@ -4,6 +4,7 @@ namespace Ollico\Utilities\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 abstract class Filters

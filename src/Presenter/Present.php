@@ -12,16 +12,18 @@ use Illuminate\Support\Collection;
 class Present implements Arrayable
 {
     protected $presentable;
+    protected $presenter;
 
-    public function __construct($presentable)
+    public function __construct($presentable, ?string $presenter = null)
     {
         $this->presentable = $presentable;
+        $this->presenter = $presenter;
     }
 
     public function transform()
     {
         if ($this->isPresentable($this->presentable)) {
-            return $this->presentable->present();
+            return $this->presentable->present($this->presenter);
         }
 
         if (is_array($this->presentable)) {
@@ -50,7 +52,7 @@ class Present implements Arrayable
     protected function mapCollection(Collection $collection): Collection
     {
         return $collection->map(function (Presentable $item) {
-            return $item->present();
+            return $item->present($this->presenter);
         });
     }
 
@@ -70,8 +72,8 @@ class Present implements Arrayable
         return $transformed;
     }
 
-    public static function make($presentable)
+    public static function make($presentable, ?string $presenter = null)
     {
-        return (new self($presentable))->transform();
+        return (new self($presentable, $presenter))->transform();
     }
 }

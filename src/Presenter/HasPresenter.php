@@ -8,15 +8,15 @@ trait HasPresenter
 {
     protected $cachedPresenterInstance = null;
 
-    public function present(): Presenter
+    public function present(?string $presenter = null): Presenter
     {
         if ($this->cachedPresenterInstance) {
             return $this->cachedPresenterInstance;
         }
 
-        $presenter = $this->getPresenter();
+        $presenterClass = $presenter ?? $this->getPresenter();
 
-        $this->cachedPresenterInstance = new $presenter($this);
+        $this->cachedPresenterInstance = new $presenterClass($this);
 
         return $this->cachedPresenterInstance;
     }

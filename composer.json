@@ -7,22 +7,18 @@
         {
             "name": "David Bonner",
             "email": "david@ollicosoftware.com"
-        },
-        {
-            "name": "Keiron McGivern",
-            "email": "keironmcgivern@ollicosoftware.com"
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "illuminate/contracts": "^6.0|^7.0|^8.0",
-        "illuminate/support": "^6.0|^7.0|^8.0",
-        "illuminate/database": "^6.0|^7.0|^8.0",
-        "davidianbonner/enumerated": "^3.0|^4.0"
+        "php": "^8.3",
+        "illuminate/contracts": "^11.0",
+        "illuminate/support": "^11.0",
+        "illuminate/database": "^11.0",
+        "davidianbonner/enumerated": "4.0.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0",
+        "orchestra/testbench": "^9.0",
+        "phpunit/phpunit": "^10.0",
         "mockery/mockery": "^1.0"
     },
         "extra": {

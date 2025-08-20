@@ -9,15 +9,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rule;
 use Ollico\Utilities\Commands\SendReleaseNotification;
+use Ollico\Utilities\Sitemap\SeoSitemap;
 use Ollico\Utilities\Validation\RequiredIfInArray;
 
 class LaravelUtilitiesServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'laravel-utils');
@@ -38,6 +34,15 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
         $this->registerCommands();
 
         $this->registerRules();
+
+        $this->registerRoutes();
+    }
+
+    public function register(): void
+    {
+        $this->app->bind(SeoSitemap::class, function () {
+            return new SeoSitemap(config('ollico.utils.models'));
+        });
     }
 
     protected function registerCommands(): void
@@ -65,6 +70,11 @@ class LaravelUtilitiesServiceProvider extends ServiceProvider
         Rule::macro('requiredIfInArray', function (array $data, string $key, $value) {
             return new RequiredIfInArray($data, $key, $value);
         });
+    }
+
+    protected function registerRoutes(): void
+    {
+        $this->loadRoutesFrom(__DIR__. ' /../../routes/routes.php');
     }
 
     protected function packagePath($path = ''): string

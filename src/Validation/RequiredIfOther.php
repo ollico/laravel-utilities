@@ -23,12 +23,12 @@ class RequiredIfOther
         $data,
         string $key,
         int $length = 5000,
-        string|BooleanOther $value = BooleanOther::OTHER,
+        string|\BackedEnum $value = BooleanOther::OTHER,
         bool $isInArray = false
     ) {
         $this->data = $data;
         $this->key = $key;
-        $this->value = $value instanceof BooleanOther ? $value->value : $value;
+        $this->value = $value instanceof \BackedEnum ? $value->value : $value;
         $this->length = $length;
         $this->isInArray = $isInArray;
     }
@@ -38,9 +38,9 @@ class RequiredIfOther
         return new self($data, $key);
     }
 
-    public function otherValue(string $value): self
+    public function otherValue(string|\BackedEnum $value): self
     {
-        $this->value = $value;
+        $this->value = $value instanceof \BackedEnum ? $value->value : $value;
 
         return $this;
     }

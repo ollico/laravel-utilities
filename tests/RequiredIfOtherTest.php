@@ -2,6 +2,8 @@
 
 namespace Ollico\Utilities\Tests;
 
+use Ollico\Utilities\Enums\Boolean;
+use Ollico\Utilities\Enums\BooleanOther;
 use Ollico\Utilities\Validation\RequiredIfOther;
 use Orchestra\Testbench\TestCase;
 
@@ -27,5 +29,19 @@ class RequiredIfOtherTest extends TestCase
 
         $rules = RequiredIfOther::make(['foo' => ['other_value']], 'foo')->inArray()->otherValue('other_value')->__toString();
         $this->assertEquals('nullable|string|max:5000|required', $rules);
+    }
+
+    /** @test */
+    public function it_accepts_backed_enums_for_other_value()
+    {
+        $rules = RequiredIfOther::make(null, 'foo')
+            ->otherValue(Boolean::YES)
+            ->__toString();
+
+        $this->assertEquals('nullable|string|max:5000|required_if:foo,yes', $rules);
+
+        $rules = (new RequiredIfOther(null, 'foo', 5000, BooleanOther::OTHER))->__toString();
+
+        $this->assertEquals('nullable|string|max:5000|required_if:foo,other', $rules);
     }
 }
